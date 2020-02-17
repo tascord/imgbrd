@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>imgbrd</title>
+    <link rel="stylesheet" href="/public/style/main.css">
+</head>
+<body>
+
+    <div id="pageblock">
+        <span class="wt">
+            <h1>Hello There!</h1>
+            <p>
+                Sorry about the mess, this website is still in development.
+                I'm working hard to get it done, but with school and what-have-you it's a tad tricky.
+            </p>
+            <h3>Be sure to come back later!</h3>
+            <button onclick="closePageBlock()">Close Me</button>
+        </span>
+    </div>
+
+    <div class="header">
+        <h2>//imgbrd</h2>
+        <button onclick="location.pathname = '/board'">Enter</button>
+    </div>
+
+</body>
+<script>    
+
+    if(document.cookie.indexOf("hideMessage") > -1) document.getElementById("pageblock").classList.add("disable");
+
+    function closePageBlock() {
+        document.cookie += `hideMessage=true;`;
+        document.getElementById("pageblock").classList.add("disable");
+    }
+
+</script>
+
+</html>
