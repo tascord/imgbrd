@@ -1,0 +1,26 @@
+{
+  "name": "imgbrd",
+  "version": "1.0.0",
+  "description": "in complete competition with serxka's",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tascord/imgbrd.git"
+  },
+  "keywords": [],
+  "author": "Oscar Hill <admin@tascord.ai> (https://tascord.ai)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tascord/imgbrd/issues"
+  },
+  "homepage": "https://github.com/tascord/imgbrd#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "multiparty": "^4.2.1",
+    "nodemon": "^2.0.2"
+  }
+}

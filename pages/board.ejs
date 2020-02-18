@@ -7,13 +7,33 @@
     <title>imgbrd</title>
     <link rel="stylesheet" href="/public/style/main.css">
 </head>
-<body>
+<body onload="load()">
+
+    <div id="upload" class="button" onclick="showUpload()"><img src="/public/images/upload_icon.svg" alt=""></div>
+
+    <div id="pageblock">
+        <span>
+            <form id="frmUploader" enctype="multipart/form-data" action="/api/upload" method="post">
+                <h2>Upload image to imgbrd.</h2>
+                <input type="file" name="image" accept="image/*" required /> <br><br>
+                <textarea name="caption" id="caption" maxlength="250" minlength="3" placeholder="Image Caption"></textarea><br><br>
+                <input type="submit" class="button" name="submit" id="btnSubmit" value="Upload" /> &nbsp;
+                <button onclick="cancelUpload()">Cancel</button>
+            </form>
+        </span>
+    </div>
+
     <div class="header">
         <h1>//imgbrd</h1>
-        <div onclick="clickLoad()" class="tooltip button loader">
+        <div id='funyfact' onclick="clickLoad()" class="tooltip button loader">
             <span class="tooltiptext" id="fact">...</span>
             <h3>Loading...</h3>
         </div>
+    </div>
+
+    <div id="posts">
+
+
     </div>
 
 </body>
@@ -23,12 +43,59 @@
         var Httpreq = new XMLHttpRequest(); // a new request
         Httpreq.open("GET",yourUrl,false);
         Httpreq.send(null);
-        return JSON.parse(Httpreq.responseText);          
+        
+        var result;
+        
+        try {
+            result = JSON.parse(Httpreq.responseText);         
+        } catch (e) {
+            return false;
+        } 
+
+        return result;
     }
 
     function clickLoad() {
         var fact = Get("https://uselessfacts.jsph.pl/random.json?language=en");
         document.getElementById('fact').innerText = fact.text;
+    }
+
+    function load() {
+        document.getElementById('pageblock').style.visibility = 'hidden';
+        setTimeout(() => { loadPosts(); }, 1000);
+    }
+
+    function cancelUpload() {
+        document.getElementById('pageblock').style.visibility = 'hidden';
+    }
+
+    function showUpload() {
+        document.getElementById('pageblock').style.visibility = 'visible';
+    }
+
+    function loadPosts() {
+
+        var posts = Get('/api/posts');
+        console.log(posts);
+
+        for(var i in posts) {
+
+            var container = document.createElement('div');
+            var image = document.createElement('img');
+            var text = document.createElement('p');
+
+            text.innerText = posts[i].captionText;
+            image.src = posts[i].localPath;
+
+            container.appendChild(image);
+            container.appendChild(text);
+
+            document.getElementById('posts').appendChild(container);
+
+        }
+
+        document.getElementById('funyfact').style.visibility = "hidden";
+
     }
     
 </script>

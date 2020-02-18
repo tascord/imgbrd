@@ -115,7 +115,7 @@ input::placeholder {
 }
 
 body {
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 p {
@@ -127,23 +127,26 @@ i {
   color: white;
 }
 
-.posts {
+#posts {
   width: 150vh;
   height: 100vh;
-  margin-left: 17%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
 }
 
-.posts div {
+#posts div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   margin-top: 2.5%;
   width: 95%;
   height: 25%;
@@ -152,19 +155,20 @@ i {
   border: solid #eee 2.5px;
   -webkit-transition: 0.25s;
   transition: 0.25s;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.posts div h2, .posts div h3, .posts div p {
-  margin-left: 2.5%;
+#posts div img {
+  max-width: 30%;
+  max-height: 90%;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
-.posts div p {
-  font-size: 20px;
-}
-
-.posts div button {
-  margin-left: 2.5%;
-  color: white;
+#posts div p {
+  font-size: medium;
 }
 
 .header {
@@ -268,6 +272,10 @@ i {
   margin-left: -160px;
   padding-left: 5px;
   padding-right: 5px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .tooltip .tooltiptext::after {
@@ -283,5 +291,37 @@ i {
 
 .tooltip:active .tooltiptext {
   opacity: 100%;
+}
+
+#upload {
+  position: fixed;
+  bottom: 5vh;
+  right: 5vh;
+  width: 7vh;
+  height: 7vh;
+}
+
+#upload img {
+  width: 95%;
+  height: 95%;
+}
+
+#caption {
+  width: 100%;
+  height: 20vh;
+  resize: none;
+  font-size: 15px;
+  font-family: 'Sorce Code Pro', monospace;
+  color: white;
+  background-color: #49797a;
+  outline: none;
+  border: none;
+  padding: 2%;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#fileUpload {
+  width: 100%;
 }
 /*# sourceMappingURL=main.css.map */
